@@ -18,7 +18,6 @@ COPY package.json /usr/src/app/
 COPY package-lock.json /usr/src/app/
 RUN npm install
 COPY . /usr/src/app/
-RUN npm run build
 # Port to listener
 EXPOSE 5005
 
