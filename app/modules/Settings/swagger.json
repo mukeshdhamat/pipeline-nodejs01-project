@@ -1,0 +1,866 @@
+{
+    "paths": {
+        "/addEmailSettings": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add email settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/AddEmailSettings"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddEmailSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmailSettings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get email settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        },
+        "/deleteEmailSetting/{settingsId}": {
+            "delete": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Delete email settings",
+                "parameters": [{
+                        "name": "settingsId",
+                        "in": "path",
+                        "description": "Id of settings",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Setting Deleted."
+                    }
+                }
+            }
+        },
+        "/addDefaultEmailSettings": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add default email settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/AddDefaultEmailSettings"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddDefaultEmailSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/addGlobalSettings": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add global settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add global settings",
+                        "schema": {
+                            "$ref": "#/definitions/AddGlobalSettings"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Global settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddGlobalSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/addAllCurrency": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add all currency",
+                "parameters": [{
+                        "name": "file",
+                        "required": true,
+                        "in": "formData",
+                        "type": "file",
+                        "description": "Upload file"
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Global settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddGlobalSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/getCurrency": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get all currency",
+                "parameters": [{
+                    "name": "Authorization",
+                    "required": true,
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string"
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All currency."
+                    }
+                }
+            }
+        },
+        "/getGlobalSettings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get all settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "required": true,
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string"
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All settings."
+                    }
+                }
+            }
+        },
+        "/changeCurrencyStatus": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Change currency status",
+                "parameters": [{
+                        "name": "body",
+                        "required": true,
+                        "in": "body",
+                        "description": "Array of ids",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currency status changed successfully..",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/changeDateFormatStatus": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Change date format status",
+                "parameters": [{
+                        "name": "body",
+                        "required": true,
+                        "in": "body",
+                        "description": "Array of ids",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currency status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/addAllDateFormat": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add all dateformat",
+                "parameters": [{
+                        "name": "file",
+                        "required": true,
+                        "in": "formData",
+                        "type": "file",
+                        "description": "Upload file"
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Global settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddGlobalSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/getDateFormat": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get all date format",
+                "parameters": [{
+                    "name": "Authorization",
+                    "required": true,
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string"
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All date format."
+                    }
+                }
+            }
+        },
+        "/addSMTPAndSMSSettings": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add SMTP settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/addSMTPAndSMSSettings"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addSMTPAndSMSSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/getSMTPAndSMSSettings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get SMTP settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        },
+        "/addSocialMediaLinks": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add socialMediaLinks settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/addSocialMediaLinks"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addSocialMediaLinks"
+                        }
+                    }
+                }
+            }
+        },
+        "/getSocialMediaLinks": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get socialMediaLinks settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        },
+        "/addSocialMediaSDK": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add socialMediaSDK settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/addSocialMediaSDK"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addSocialMediaSDK"
+                        }
+                    }
+                }
+            }
+        },
+        "/getSocialMediaSDK": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get socialMediaSDK settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        },
+        "/addPaymentDetails": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Add PaymentDetails settings",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add settings",
+                        "schema": {
+                            "$ref": "#/definitions/addPaymentDetails"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addPaymentDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/getPaymentDetails": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get PaymentDetails settings",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        },
+        "/getEmailTitle": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get email title",
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Authorization token",
+                    "type": "string",
+                    "required": true
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settings."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AddEmailSettings": {
+            "required": [
+                "emailTemplateId",
+                "fromEmail",
+                "adminEmail"
+            ],
+            "properties": {
+                "emailTemplateId": {
+                    "example": "5d25ecdf31f21b0f0ae96ba3",
+                    "type": "string"
+                },
+                "fromEmail": {
+                    "example": "donotreply2@test.com",
+                    "type": "string"
+                },
+                "adminEmail": {
+                    "example": "adminmail@test.com",
+                    "type": "string"
+                }
+            }
+        },
+        "AddDefaultEmailSettings": {
+            "required": [
+                "defaultFromEmail",
+                "defaultAdminEmail"
+            ],
+            "properties": {
+                "defaultFromEmail": {
+                    "example": "donotreply2@test.com",
+                    "type": "string"
+                },
+                "defaultAdminEmail": {
+                    "example": "adminmail@test.com",
+                    "type": "string"
+                }
+            }
+        },
+        "AddGlobalSettings": {
+            "required": [
+                "siteName",
+                "siteFavicon",
+                "siteLogoSmall",
+                "siteLogoLarge",
+                "onlineStatus",
+                "offlineMessage",
+                "metaTitle",
+                "metaDescription",
+                "metaKeyword",
+                "analyticsSnippet",
+                "headerSnippet",
+                "footerSnippet",
+                "currency",
+                "dateFormat",
+                "timeZone"
+            ],
+            "properties": {
+                "siteName": {
+                    "example": "Godday Info tech",
+                    "type": "string"
+                },
+                "siteFavicon": {
+                    "example": "favicon.svg",
+                    "type": "string"
+                },
+                "siteLogoSmall": {
+                    "example": "smallLogo.png",
+                    "type": "string"
+                },
+                "siteLogoLarge": {
+                    "example": "largeLogo.png",
+                    "type": "string"
+                },
+                "onlineStatus": {
+                    "example": false,
+                    "type": "boolean"
+                },
+                "offlineMessage": {
+                    "example": "add offline message here",
+                    "type": "string"
+                },
+                "metaTitle": {
+                    "example": "Seed node.js",
+                    "type": "string"
+                },
+                "metaDescription": {
+                    "example": "Seed project node.js",
+                    "type": "string"
+                },
+                "metaKeyword": {
+                    "example": "seed, node.js, swagger",
+                    "type": "string"
+                },
+                "analyticsSnippet": {
+                    "example": "add analyticsSnippet here",
+                    "type": "string"
+                },
+                "headerSnippet": {
+                    "example": "add headerSnippet here",
+                    "type": "string"
+                },
+                "footerSnippet": {
+                    "example": "add footerSnippet here",
+                    "type": "string"
+                },
+                "currency": {
+                    "example": "AUD",
+                    "type": "string"
+                },
+                "dateFormat": {
+                    "example": "DD/MM/YYYY",
+                    "type": "string"
+                },
+                "timeZone": {
+                    "example": "Asia/Calcutta",
+                    "type": "string"
+                }
+            }
+        },
+        "addSMTPAndSMSSettings": {
+            "required": [
+                "host",
+                "port",
+                "username",
+                "password",
+                "mobileNumber",
+                "accountSid",
+                "authToken"
+            ],
+            "properties": {
+                "host": {
+                    "example": "smtp.gmail.com",
+                    "type": "string"
+                },
+                "port": {
+                    "example": 587,
+                    "type": "number"
+                },
+                "username": {
+                    "example": "meanstack2017@gmail.com",
+                    "type": "string"
+                },
+                "password": {
+                    "example": "Mean@123",
+                    "type": "string"
+                },
+                "mobileNumber": {
+                    "example": "+1 803 675 5436",
+                    "type": "string"
+                },
+                "accountSid": {
+                    "example": "ACca7951234232f84dd78c639984e2b3fe",
+                    "type": "string"
+                },
+                "authToken": {
+                    "example": "607219b5c03d90427ff2eb235ca9ec63",
+                    "type": "string"
+                }
+            }
+        },
+        "addSocialMediaLinks": {
+            "properties": {
+                "fbUrl": {
+                    "example": "www.facebook.com",
+                    "type": "string"
+                },
+                "twitterUrl": {
+                    "example": "",
+                    "type": "string"
+                },
+                "linkedInUrl": {
+                    "example": "",
+                    "type": "string"
+                },
+                "instagramUrl": {
+                    "example": "",
+                    "type": "string"
+                },
+                "pinterestUrl": {
+                    "example": "",
+                    "type": "string"
+                }
+            }
+        },
+        "addSocialMediaSDK": {
+            "properties": {
+                "facebookAppId": {
+                    "example": "45588588558514",
+                    "type": "string"
+                },
+                "googleAuthToken": {
+                    "example": "adsfdserewrdfsder",
+                    "type": "string"
+                }
+            }
+        },
+        "addPaymentDetails": {
+            "properties": {
+                "stripe": {
+                    "example": {
+                        "status": true,
+                        "backendKey": "",
+                        "frontendkey": ""
+                    },
+                    "type": "object"
+                },
+                "paypal": {
+                    "example": {
+                        "status": true,
+                        "mode": "sandbox",
+                        "clientId": "",
+                        "clientSecret": ""
+                    },
+                    "type": "object"
+                }
+            }
+        },
+        "ChangeStatus": {
+            "required": [
+                "ids",
+                "status"
+            ],
+            "properties": {
+                "ids": {
+                    "example": [
+                        "5d5256470daad20c9373f0f8",
+                        "5d5256470daad20c9373f0f7",
+                        "5d5256470daad20c9373f0f4",
+                        "5d5256470daad20c9373f0f3"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": false,
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

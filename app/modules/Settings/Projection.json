@@ -1,0 +1,39 @@
+{
+    "emailTemplate": {
+        "emailTitle": 1
+    },
+    "settings": {
+        "__v": 0,
+        "createdAt": 0,
+        "updatedAt": 0
+    },
+    "defaultEmailSettings": {
+        "defaultFromEmail": 1,
+        "defaultAdminEmail": 1
+    },
+    "smtpAndsms": {
+        "smtp": 1,
+        "sms": 1
+    },
+    "socialMediaLinks": {
+        "socialMediaLinks": 1
+    },
+    "socialMediaSDK": {
+        "socialMediaSDK": 1
+    },
+    "payments": {
+        "stripe": 1,
+        "paypal": 1
+    },
+    "globalSettings": {
+        "allCurrency": 0,
+        "allDateFormat": 0,
+        "defaultFromEmail": 0,
+        "defaultAdminEmail": 0,
+        "createdAt": 0,
+        "updatedAt": 0,
+        "smtp": 0,
+        "sms": 0,
+        "__v": 0
+    }
+}

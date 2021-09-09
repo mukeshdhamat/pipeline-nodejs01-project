@@ -1,0 +1,271 @@
+{
+    "paths": {
+        "/addUpdateTimezone": {
+            "post": {
+                "tags": [
+                    "TimeZone Management"
+                ],
+                "description": "Add Timezone",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add Timezone",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateTimezone"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Timezone added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateTimezone"
+                        }
+                    }
+                }
+            }
+        },
+        "/timezoneListing": {
+            "post": {
+                "tags": [
+                    "TimeZone Management"
+                ],
+                "description": "TimeZone list",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Params",
+                        "schema": {
+                            "$ref": "#/definitions/timezoneListing"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TimeZone list.",
+                        "schema": {
+                            "$ref": "#/definitions/timezoneListing"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteTimezones": {
+            "post": {
+                "tags": [
+                    "TimeZone Management"
+                ],
+                "description": "Delete timezone",
+                "parameters": [
+                    {
+                        "name": "timezoneIds",
+                        "in": "body",
+                        "description": "Ids of timezone",
+                        "schema": {
+                            "$ref": "#/definitions/deleteTimezones"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Timezone deleted successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/deleteTimezones"
+                        }
+                    }
+                }
+            }
+        },
+        "/getTimezoneDetails/{timezoneId}": {
+            "get": {
+                "tags": [
+                    "TimeZone Management"
+                ],
+                "description": "Get Timezone",
+                "parameters": [
+                    {
+                        "name": "timezoneId",
+                        "in": "path",
+                        "description": "Id of Timezone",
+                        "schema": {
+                            "$ref": "#/definitions/getTimezoneDetails"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Timezone details.",
+                        "schema": {
+                            "$ref": "#/definitions/getTimezoneDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/changeTimezoneStatus": {
+            "post": {
+                "tags": [
+                    "TimeZone Management"
+                ],
+                "description": "Change timezones status",
+                "parameters": [
+                    {
+                        "name": "timezoneIds",
+                        "in": "body",
+                        "description": "Ids of timezones",
+                        "schema": {
+                            "$ref": "#/definitions/changeTimezoneStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/changeTimezoneStatus"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "timezoneListing": {
+            "required": [
+                "page",
+                "pagesize"
+            ],
+            "properties": {
+                "page": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "pagesize": {
+                    "example": 10,
+                    "type": "number"
+                },
+                "columnKey": {
+                    "example": "timezoneListing",
+                    "type": "string"
+                },
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "timezone",
+                            "type": "contains",
+                            "value": ""
+                        }
+                    ]
+                },
+                "condition": {
+                    "example": "$or",
+                    "type": "string"
+                }
+            }
+        },
+        "deleteTimezones": {
+            "required": [
+                "timezoneIds"
+            ],
+            "properties": {
+                "timezoneIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "addUpdateTimezone": {
+            "required": [
+                "countryId",
+                "timezone"
+            ],
+            "properties": {
+                "timezone": {
+                    "example": "",
+                    "type": "string"
+                },
+                "countryId": {
+                    "example": "5efd9f17d9c05727505ecd84",
+                    "type": "objectId"
+                },
+                "timezoneId": {
+                    "example": "5efd9f17d9c05727505ecd84",
+                    "type": "objectId"
+                }
+            }
+        },
+        "changeTimezoneStatus": {
+            "required": [
+                "timezoneIds"
+            ],
+            "properties": {
+                "timezoneIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": true,
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

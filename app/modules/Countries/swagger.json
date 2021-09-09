@@ -1,0 +1,388 @@
+{
+    "paths": {
+        "/addUpdateCountry": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Add Country",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add Country",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateCountry"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateCountry"
+                        }
+                    }
+                }
+            }
+        },
+        "/countriesListing": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Countries list",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Params",
+                        "schema": {
+                            "$ref": "#/definitions/countriesListing"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Countries list.",
+                        "schema": {
+                            "$ref": "#/definitions/countriesListing"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteCountries": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Delete Countries",
+                "parameters": [
+                    {
+                        "name": "countriesIds",
+                        "in": "body",
+                        "description": "Ids of countries",
+                        "schema": {
+                            "$ref": "#/definitions/deleteCountries"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Countries deleted successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/deleteCountries"
+                        }
+                    }
+                }
+            }
+        },
+        "/getCountryDetails/{countryId}": {
+            "get": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Get Country",
+                "parameters": [
+                    {
+                        "name": "countryId",
+                        "in": "path",
+                        "description": "Id of Country",
+                        "schema": {
+                            "$ref": "#/definitions/getCountryDetails"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country details.",
+                        "schema": {
+                            "$ref": "#/definitions/getCountryDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/changeCountriesStatus": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Change countries status",
+                "parameters": [
+                    {
+                        "name": "countriesIds",
+                        "in": "body",
+                        "description": "Ids of countries",
+                        "schema": {
+                            "$ref": "#/definitions/changeCountriesStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/changeCountriesStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/getCountriesList": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Getting countries list.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Params",
+                        "schema": {
+                            "$ref": "#/definitions/getCountriesList"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Countries list.",
+                        "schema": {
+                            "$ref": "#/definitions/getCountriesList"
+                        }
+                    }
+                }
+            }
+        },
+        "/downloadSampleCsvForCountries": {
+            "get": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Get Sample csv",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Downloaded successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/downloadSampleCsvForCountries"
+                        }
+                    }
+                }
+            }
+        },
+        "/bulkUpload": {
+            "post": {
+                "tags": [
+                    "Countries Management"
+                ],
+                "description": "Upload file",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "required": true,
+                        "in": "formData",
+                        "type": "file",
+                        "description": "Upload file"
+                    },
+                    {
+                        "name": "type",
+                        "required": true,
+                        "in": "formData",
+                        "type": "string",
+                        "description": "enter csv or excel"
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "multipart/form-data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uploaded successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/bulkUpload"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "countriesListing": {
+            "required": [
+                "page",
+                "pagesize"
+            ],
+            "properties": {
+                "page": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "pagesize": {
+                    "example": 10,
+                    "type": "number"
+                },
+                "columnKey": {
+                    "example": "countriesListing",
+                    "type": "string"
+                },
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "countryName",
+                            "type": "contains",
+                            "value": ""
+                        }
+                    ]
+                },
+                "condition": {
+                    "example": "$or",
+                    "type": "string"
+                }
+            }
+        },
+        "deleteCountries": {
+            "required": [
+                "countriesIds"
+            ],
+            "properties": {
+                "countriesIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "addUpdateCountry": {
+            "required": [
+                "countryName",
+                "countryCode",
+                "phoneCode"
+            ],
+            "properties": {
+                "countryName": {
+                    "example": "India",
+                    "type": "string"
+                },
+                "countryCode": {
+                    "example": "IN",
+                    "type": "string"
+                },
+                "phoneCode": {
+                    "example": "+91",
+                    "type": "string"
+                },
+                "countryId": {
+                    "example": "5efd9f17d9c05727505ecd84",
+                    "type": "objectId"
+                }
+            }
+        },
+        "changeCountriesStatus": {
+            "required": [
+                "countriesIds"
+            ],
+            "properties": {
+                "countriesIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": true,
+                    "type": "boolean"
+                }
+            }
+        },
+        "getCountriesList": {
+            "properties": {
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

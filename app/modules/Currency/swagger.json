@@ -1,0 +1,271 @@
+{
+    "paths": {
+        "/addUpdateCurrency": {
+            "post": {
+                "tags": [
+                    "Currency Management"
+                ],
+                "description": "Add Currency",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add Currency",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateCurrency"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currency added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/addUpdateCurrency"
+                        }
+                    }
+                }
+            }
+        },
+        "/currenciesListing": {
+            "post": {
+                "tags": [
+                    "Currency Management"
+                ],
+                "description": "Currencies list",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Params",
+                        "schema": {
+                            "$ref": "#/definitions/currenciesListing"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currencies list.",
+                        "schema": {
+                            "$ref": "#/definitions/currenciesListing"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteCurrencies": {
+            "post": {
+                "tags": [
+                    "Currency Management"
+                ],
+                "description": "Delete Currencies",
+                "parameters": [
+                    {
+                        "name": "currenciesIds",
+                        "in": "body",
+                        "description": "Ids of Currencies",
+                        "schema": {
+                            "$ref": "#/definitions/deleteCurrencies"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currencies deleted successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/deleteCurrencies"
+                        }
+                    }
+                }
+            }
+        },
+        "/getCurrencyDetails/{currencyId}": {
+            "get": {
+                "tags": [
+                    "Currency Management"
+                ],
+                "description": "Get Currency",
+                "parameters": [
+                    {
+                        "name": "currencyId",
+                        "in": "path",
+                        "description": "Id of Currency",
+                        "schema": {
+                            "$ref": "#/definitions/getCurrencyDetails"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Currency details.",
+                        "schema": {
+                            "$ref": "#/definitions/getCurrencyDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/changeCurrenciesStatus": {
+            "post": {
+                "tags": [
+                    "Currency Management"
+                ],
+                "description": "Change Currencies status",
+                "parameters": [
+                    {
+                        "name": "currenciesIds",
+                        "in": "body",
+                        "description": "Ids of Currencies",
+                        "schema": {
+                            "$ref": "#/definitions/changeCurrenciesStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/changeCurrenciesStatus"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "currenciesListing": {
+            "required": [
+                "page",
+                "pagesize"
+            ],
+            "properties": {
+                "page": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "pagesize": {
+                    "example": 10,
+                    "type": "number"
+                },
+                "columnKey": {
+                    "example": "currenciesListing",
+                    "type": "string"
+                },
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "currency",
+                            "type": "contains",
+                            "value": ""
+                        }
+                    ]
+                },
+                "condition": {
+                    "example": "$or",
+                    "type": "string"
+                }
+            }
+        },
+        "deleteCurrencies": {
+            "required": [
+                "currenciesIds"
+            ],
+            "properties": {
+                "currenciesIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "addUpdateCurrency": {
+            "required": [
+                "countryId",
+                "currency"
+            ],
+            "properties": {
+                "currency": {
+                    "example": "INR",
+                    "type": "string"
+                },
+                "countryId": {
+                    "example": "5efd9f17d9c05727505ecd84",
+                    "type": "objectId"
+                },
+                "currencyId": {
+                    "example": "5efd9f17d9c05727505ecd84",
+                    "type": "objectId"
+                }
+            }
+        },
+        "changeCurrenciesStatus": {
+            "required": [
+                "currenciesIds"
+            ],
+            "properties": {
+                "currenciesIds": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": true,
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
