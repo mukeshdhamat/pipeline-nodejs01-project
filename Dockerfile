@@ -23,4 +23,4 @@ EXPOSE 5005
 
 
 # Main command
-CMD [ "pm2", "start", "server.js" ]
+CMD [ "npm", "start"]
