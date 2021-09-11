@@ -15,7 +15,7 @@ RUN node -v
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install -g nodemon
+RUN npm install
 COPY . /usr/src/app/
 # Port to listener
 EXPOSE 5005
