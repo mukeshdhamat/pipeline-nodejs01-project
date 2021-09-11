@@ -23,4 +23,4 @@ EXPOSE 5005
 
 
 # Main command
-CMD [ "npm", "start"]
+CMD [ "node", "server.js"]
