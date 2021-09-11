@@ -18,7 +18,7 @@ COPY package.json /usr/src/app/
 RUN npm install
 COPY . /usr/src/app/
 # Port to listener
-EXPOSE 5005
+EXPOSE 4005
 
 
 # Main command
