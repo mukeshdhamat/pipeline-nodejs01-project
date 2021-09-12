@@ -1,0 +1,12 @@
+version: '3'
+services:
+        nodejs-app-01:
+                container_name: nodejs-app-01
+                image: mukeshdhamat/nodejs:latest
+                ports:
+                        - "4005:4005"
+networks:
+        default:
+                external: true
+                name: ubuntu_net
+         
