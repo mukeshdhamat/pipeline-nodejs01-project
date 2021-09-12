@@ -17,6 +17,13 @@ node {
     stage('remove images') {
       sh 'docker rmi mukeshdhamat/nodejs:latest'
     }
+    stage('stop and remove docker-compose') {
+      sh 'docker-compose stop'
+      sh 'docker-compose rm -f'
+    }
+    stage('Run docker-compose') {
+      sh 'docker-compose up -d'
+    }
   }
   catch (err) {
     throw err
