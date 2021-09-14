@@ -10,12 +10,12 @@ node {
       sh 'printenv'
     }
     stage('docker build/push') {
-      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-        def app = docker.build("mukeshdhamat/nodejs:latest", '.').push()
+      docker.withRegistry('https://878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs', 'ecr:ap-south-1:aws_ecr') {
+        def app = docker.build("878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs:latest", '.').push()
       }
     }
     stage('remove images') {
-      sh 'docker rmi mukeshdhamat/nodejs:latest'
+      sh 'docker rmi 878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs:latest'
     }
   }
   catch (err) {
