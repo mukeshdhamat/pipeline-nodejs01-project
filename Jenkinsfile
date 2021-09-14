@@ -9,11 +9,8 @@ node {
       sh 'docker -v'
       sh 'printenv'
     }
-    stage ('ecr login') {
-      sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 878627739692.dkr.ecr.ap-south-1.amazonaws.com'
-    }
     stage('docker build/push') {
-      docker.withRegistry('https://878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs', 'aws_ecr') {
+      docker.withRegistry('https://878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs', 'ecr:ap-south-1:aws_ecr') {
         def app = docker.build("878627739692.dkr.ecr.ap-south-1.amazonaws.com/nodejs:latest", '.').push()
       }
     }
